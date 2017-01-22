@@ -1,0 +1,13 @@
+.match-component md-card{
+    margin-top: 50px;
+    min-width: 450px;
+}
+.match-component button{
+    margin: 10px;
+}
+.grey{
+    color: #757575;
+}
+app-atendees{
+    min-width: 400px;
+}

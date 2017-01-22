@@ -1,0 +1,15 @@
+<expansion-panels-container>
+  <expansion-panel>
+    <expansion-panel-title>
+      Uczestnicy
+    </expansion-panel-title>
+    <expansion-panel-content>
+      <md-list dense>
+        <md-list-item *ngFor="let atendee of atendees"> 
+          <img md-list-avatar src="{{atendee.avatar}}" alt="Avatar">
+          <p md-line>{{atendee.name}} </p>
+        </md-list-item>
+      </md-list>
+    </expansion-panel-content>
+  </expansion-panel>
+</expansion-panels-container>

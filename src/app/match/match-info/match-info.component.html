@@ -1,0 +1,23 @@
+<div fxLayoutAlign="center center" class="match-component">
+  <md-card  fxLayout="column" fxLayoutAlign="center center">
+    <md-card-title><span class="grey">NASTĘPNY MECZ</span></md-card-title>
+    <md-card-content>
+      <md-list>
+        <md-list-item>
+          <i class="material-icons">today</i> <span class="grey">{{match.date}}</span>
+        </md-list-item>
+        <md-list-item>
+          <i class="material-icons">place</i> <span class="grey">{{match.venue}}</span>
+        </md-list-item>
+        <md-list-item fxLayoutAlign="center">
+          <span class="grey">Będziesz?</span>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+    <md-card-actions fxLayoutAlign="end end">
+      <button md-mini-fab color="accent" [disabled]="isAddButonDisabled" (click)="appatendee.addAtendee(user); setUserAttendace(true)"><md-icon>check</md-icon></button>
+      <button md-mini-fab color="warn" [disabled]="isRemoveButtonDisabled" (click)="appatendee.removeAtendee(user); setUserAttendace(false)"><md-icon>clear</md-icon></button>
+    </md-card-actions>
+    <app-atendees #appatendee></app-atendees>
+  </md-card>
+</div>
