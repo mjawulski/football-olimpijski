@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FootballOlimpijski.Model;
+using FootballOlimpijski.DTO;
 
 namespace FootballOlimpijski.Controllers
 {
@@ -22,12 +23,12 @@ namespace FootballOlimpijski.Controllers
 
         // GET: api/Matches
         [HttpGet]
-        public IEnumerable<Match> GetMatches()
+        public IEnumerable<MatchDTO> GetMatches()
         {
-            var aaaaaaaaa1 = _context.Matches.Include(m => m.Atendees);
-            var aaaaaaaaa2 = aaaaaaaaa1.ThenInclude(ma=>ma.User);
+            var matches = _context.Matches.Include(m => m.Atendees).ThenInclude(ma => ma.User);
+            var matchesDTO = matches.Select(m => new MatchDTO { Id = m.Id, Date = m.Date, Venue = m.Venue, Atendees = m.Atendees.Select(a => new UserDTO() { Id = a.User.Id, Username = a.User.Username, AvatarUrl = a.User.AvatarUrl }).ToList() });
 
-            return aaaaaaaaa2;
+            return matchesDTO;
         }
 
         // GET: api/Matches/5

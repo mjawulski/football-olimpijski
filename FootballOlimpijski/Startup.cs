@@ -32,15 +32,12 @@ namespace FootballOlimpijski
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc().AddJsonOptions(
-            options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
+            services.AddMvc();
 
-            services
-                .AddEntityFrameworkSqlServer()
-                .AddDbContext<FootballContext>((serviceProvider, options) =>
-                    options.UseSqlServer(ConfigurationManager.ConnectionStrings["ds"].ConnectionString)
-                           .UseInternalServiceProvider(serviceProvider));
+            services.AddEntityFrameworkSqlServer()
+                    .AddDbContext<FootballContext>((serviceProvider, options) =>
+                        options.UseSqlServer(ConfigurationManager.ConnectionStrings["ds"].ConnectionString)
+                        .UseInternalServiceProvider(serviceProvider));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
